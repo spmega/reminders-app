@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Reminders> remindersArrayList = new ArrayList<Reminders>();
-    private final int REQUEST_CODE = 20;
+    public final int REQUEST_CODE = 20;
     private RemindersListAdapter listAdapter = null;
 
     @Override
@@ -32,8 +33,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         listAdapter = new RemindersListAdapter(this, remindersArrayList);
-
         listView.setAdapter(listAdapter);
+
+        registerForContextMenu(listView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -69,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             reminder.title = data.getStringExtra("Title");
             reminder.message = data.getStringExtra("Message");
             remindersArrayList.add(reminder);
+            reminder.save();
             listAdapter.notifyDataSetChanged();
             reminder = null;
         }
