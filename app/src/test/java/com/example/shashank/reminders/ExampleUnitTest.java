@@ -1,7 +1,6 @@
 package com.example.shashank.reminders;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**
