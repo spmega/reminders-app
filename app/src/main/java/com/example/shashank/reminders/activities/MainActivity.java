@@ -6,9 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Reminders> remindersArrayList = new ArrayList<Reminders>();
     private final int REQUEST_CODE = 20;
     private RemindersListAdapter listAdapter = null;
+    private int positionToDelete = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,33 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new RemindersListAdapter(this, remindersArrayList);
 
         listView.setAdapter(listAdapter);
+
+        registerForContextMenu(listView);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+
+        if(v.getId() == R.id.reminders_list){
+            AdapterView.AdapterContextMenuInfo adapterContextMenuInfo = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            positionToDelete = adapterContextMenuInfo.position;
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.delete:
+                remindersArrayList.remove(positionToDelete);
+                listAdapter.notifyDataSetChanged();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     @Override

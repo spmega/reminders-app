@@ -24,14 +24,14 @@
         android:layout_below="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"/>
+        />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/edit_message"
         android:layout_below="@+id/edit_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Message"/>
+        />
 
     <android.support.v7.widget.ButtonBarLayout
         android:layout_centerHorizontal="true"
