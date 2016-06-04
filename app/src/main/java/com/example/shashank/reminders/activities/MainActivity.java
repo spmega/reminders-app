@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Reminders> remindersArrayList = new ArrayList<Reminders>();
+    private static ArrayList<Reminders> remindersArrayList = new ArrayList<Reminders>();
     public final int REQUEST_CODE = 20;
     private RemindersListAdapter listAdapter = null;
     private int positionToDelete = 0;
@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(listAdapter);
 
         registerForContextMenu(listView);
+    }
+
+    public ArrayList<Reminders> getList(){
+        return remindersArrayList;
     }
 
     @Override
