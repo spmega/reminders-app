@@ -15,7 +15,7 @@ public class RemindersApplication extends Application {
         Configuration dbConfiguration = new Configuration.Builder(this)
                 .setDatabaseName("Reminders_app.db")
                 .addModelClass(Reminders.class)
-                .setDatabaseVersion(1)
+                .setDatabaseVersion(2)
                 .create();
         ActiveAndroid.initialize(dbConfiguration);
     }

@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 
 import com.example.shashank.reminders.R;
@@ -34,13 +35,19 @@ public class RemindersListAdapter extends ArrayAdapter<Reminders> {
 
         TextView title = (TextView) convertView.findViewById(R.id.list_title);
         TextView message = (TextView) convertView.findViewById(R.id.message);
+        CheckedTextView[] daysSelected = {(CheckedTextView) convertView.findViewById(R.id.list_item_sunday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_monday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_tuesday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_wednesday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_thursday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_friday),
+                (CheckedTextView) convertView.findViewById(R.id.list_item_saturday)
+        };
 
-        if(reminder == null){
-            title.setText("No Reminders");
-            message.setText("Please add a reminder using the menu option");
-        } else{
-            title.setText(reminder.title);
-            message.setText(reminder.message);
+        title.setText(reminder.title);
+        message.setText(reminder.message);
+        for(int i = 0; i < daysSelected.length; i++){
+            daysSelected[i].setChecked(reminder.daysOfWeekSelected[i]);
         }
 
         return convertView;

@@ -18,6 +18,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    //TODO: use AsyncTask to save and delete Reminders
+
 
     private static ArrayList<Reminders> remindersArrayList = null;
     public final int REQUEST_CODE = 20;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ListView listView = (ListView) findViewById(R.id.reminders_list);
         setSupportActionBar(toolbar);
+        setUpListRowSelectedDays();
 
         remindersArrayList = (ArrayList<Reminders>) Reminders.getAll();
         if(remindersArrayList == null)
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(listAdapter);
 
         registerForContextMenu(listView);
+    }
+
+    private void setUpListRowSelectedDays() {
+
     }
 
     public ArrayList<Reminders> getList(){
@@ -109,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
             Reminders reminder = new Reminders();
             reminder.title = data.getStringExtra("Title");
             reminder.message = data.getStringExtra("Message");
+            reminder.daysOfWeekSelected = data.getBooleanArrayExtra("Selected Days");
             remindersArrayList.add(reminder);
             reminder.save();
             listAdapter.notifyDataSetChanged();

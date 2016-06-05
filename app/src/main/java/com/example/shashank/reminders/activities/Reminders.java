@@ -5,6 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,14 +20,19 @@ public class Reminders extends Model {
     @Column(name = "Message")
     public String message = null;
 
+    //TODO: must serialize, SQLDatabase or ActiveAndroid ORM cannot store arrays
+    @Column(name = "Days")
+    public boolean[] daysOfWeekSelected = new boolean[7];
+
     public Reminders(){
         super();
     }
 
-    public Reminders(String title, String message){
+    public Reminders(String title, String message, boolean[] daysOfWeekSelected){
         super();
         this.title = title;
         this.message = message;
+        this.daysOfWeekSelected = daysOfWeekSelected;
     }
 
     public static List<Reminders> getAll(){

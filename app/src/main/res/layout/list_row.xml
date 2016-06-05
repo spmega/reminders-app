@@ -15,5 +15,69 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"
+        android:singleLine="true"
+        android:ellipsize="end"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckedTextView
+            android:id="@+id/list_item_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="SN"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="M"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="T"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="W"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="TH"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="F"
+            />
+        <CheckedTextView
+            android:id="@+id/list_item_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:checkMark="@drawable/checkbox_states"
+            android:text="ST"
+            />
+    </LinearLayout>
+
 </LinearLayout>

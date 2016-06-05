@@ -19,9 +19,73 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <LinearLayout
+        android:id="@+id/select_days"
+        android:layout_below="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <CheckedTextView
+            android:id="@+id/checkbox_monday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_tuesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tuesday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_wednesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wednesday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_thursday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thursday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_friday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_saturday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+
+        <CheckedTextView
+            android:id="@+id/checkbox_sunday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday"
+            android:checkMark="@drawable/checkbox_states"
+            android:checked="false"/>
+    </LinearLayout>
+
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/edit_title"
-        android:layout_below="@+id/appbar_layout"
+        android:layout_below="@+id/select_days"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -31,11 +95,13 @@
         android:layout_below="@+id/edit_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/button_layout"
         />
 
     <android.support.v7.widget.ButtonBarLayout
+        android:id="@+id/button_layout"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/edit_message"
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
