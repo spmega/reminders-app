@@ -32,8 +32,6 @@ public class Reminders extends Model {
     public static List<Reminders> getAll(){
         return new Select()
                 .from(Reminders.class)
-                .orderBy("Name ABC")
-                .limit(100)
                 .execute();
     }
 

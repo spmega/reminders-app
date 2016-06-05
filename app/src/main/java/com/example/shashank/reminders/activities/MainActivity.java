@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static ArrayList<Reminders> remindersArrayList = new ArrayList<Reminders>();
+    private static ArrayList<Reminders> remindersArrayList = null;
     public final int REQUEST_CODE = 20;
     private RemindersListAdapter listAdapter = null;
     private int positionToDelete = 0;
@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ListView listView = (ListView) findViewById(R.id.reminders_list);
         setSupportActionBar(toolbar);
+
+        remindersArrayList = (ArrayList<Reminders>) Reminders.getAll();
+        if(remindersArrayList == null)
+            remindersArrayList = new ArrayList<Reminders>();
 
         listAdapter = new RemindersListAdapter(this, remindersArrayList);
         listView.setAdapter(listAdapter);
@@ -59,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.delete:
-                remindersArrayList.remove(positionToDelete);
+                Reminders reminderToDelete = remindersArrayList.remove(positionToDelete);
+                reminderToDelete.delete();
                 listAdapter.notifyDataSetChanged();
                 return true;
             default:
